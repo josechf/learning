@@ -1,0 +1,79 @@
+
+sudo su /*enable root mode*/
+system control
+	power off
+	link information: https://www.ionos.es/digitalguide/servidores/configuracion/comandos-shutdown-de-linux/
+	shutdown /*turn off */
+	shutdown -h /*same command*/
+	shutdown -h 0 /*turn off now*/
+	shutdown now /*turn off in a minut*/
+	shutdown -r 0 /*reboot immediately*/ 
+	shutdown -r now /*reboot in a minut*/
+	shutdown -h +20 /*turn off in a 20 minut*/
+	shutdown -r +20 /*reboot in a 20 minut*/
+	shutdown -c /*cancel process*/	
+
+	have information
+/*HARDWARE*/
+hwinfo --short /*view infromation about hardware*/ 
+
+ps aux /*see every process on the system*/
+ps -ejH /*print a process tree, you can also use: ps axu*/
+man ps /*more information about ps*/
+top /*see every process on the system in real time*/
+htop /*see every process pretty, int real time*/
+link ps,top : https://openwebinars.net/blog/20-comandos-para-administrar-y-gestionar--facilmente-los-procesos-linux/
+sudo kill -KILL 'PID del proceso' /*kill process*/
+kill -HUP PID /*restart the process server*/
+killall 'name process' /*same kill, but stops everything about this process*/
+pkill -9 'process name' /*same kill, but with names*/
+
+
+ls /*whatch documents and directory*/
+cd /*move*/
+cat /*read documents*/
+ls 'directory/'  /*show what's there*/
+find 'path' /*search all within the path, same 'ls -a'*/
+find . -type f /*show only files*/
+find . -name file | xargs cat /*xargs run the cat command in parallel*/
+find . -name file* /*shows files starting with file*/
+find . | xargs grep "palabra" /*filter by palabra*/
+chmod type+action /*change privileges type(owner,grup,other) action(read,write,execute)*/
+chmod g-r,o+w file
+chgrp user file /*assign user as grup to file*/
+lsattr file /*special privileges*/
+chattr -i -v file /*remove special privileges i, -v show what happens*/
+which command /*show path of command*/
+echo $PATH /*show path*/
+file /*show type of file*/
+time /*computation time of a commands*/ example: time find . -name algo
+nm-applet /*ejecute wireless network options*/
+acpi -b /*battery information*/
+xrandr | grep '*' /*show screen resolution*/
+
+	delete
+rm -r /*remove file*/
+rmdir /*remove empty directori*/
+rmdir -p /*remove directori and his content*/
+	
+	utilities
+acpi /*information system*/
+xrandr /*screen stuff*/
+
+	files/documents
+touch name /*created files*/
+command > file /*send command output to the first line of the file*/
+
+	tips and combinations
+find . -type f -printf "%f\t%p\t%u\t%g\t%m\n" | column -t   /*%f(documents) %p(absoulte path) %u(owner user) %g(goup) %m(file permission) \n(required)*/
+cat $(find . -name file)  /*it's same to*/  find . -name file | xargs cat 
+
+alias palabra="very long command" /*create temporal alias*/
+/*alias forever: edit ~/.bashrc, alias palabra="any command"*/
+
+
+/--------- INTERNET------------/
+
+dig +short www.solvetic.com /*obtener ip de sitio web*/
+ping pagina.com /*obtener ip de sitio web*/
+whois ip /*obtener ip absoluta*/
